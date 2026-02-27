@@ -1,29 +1,13 @@
 # Void Patrol
 
-A top-down shooter with mouse-aimed combat, dash mechanics, and wave-based progression. Single HTML file, zero dependencies.
+1,816 lines of JavaScript. One HTML file. No build step, no dependencies, no assets on disk. You open it in a browser and you're dodging bullets.
 
-The sequel (or spiritual successor) to [Void Survivor](https://github.com/sisiphamus/void-survivor-game), Void Patrol adds mechanical depth with a dash system, combo tracking, pickup magnets, and boss fights every 5 waves.
+This is a top-down shooter where you aim with the mouse, move with WASD, and dash through danger on a 3-second cooldown. Every sound in the game -- the 800-to-200Hz frequency sweep when you shoot, the sawtooth growl when a boss spawns, the ascending C-E-G chime when you buy an upgrade -- is synthesized at runtime from raw oscillators and noise buffers. Nothing is prerecorded. The Web Audio API is doing all of it.
 
-## Gameplay
+Between waves you spend credits at the upgrade shop: hull plating, thrusters, fire rate, power, bullet velocity, multi-shot, shields, and a pickup magnet. Costs scale exponentially so you're always making tradeoffs. Every 5 waves a boss shows up -- 40 HP, phase shift at half health, fires back at you every 40 frames. The screen shakes with a 0.88 decay factor on every impact, which sounds like a small number until everything is exploding at once.
 
-- **WASD movement** with **mouse-aimed crosshair shooting**
-- **Dash mechanic** with cooldown (180 frames) for burst repositioning
-- **Invincibility frames** (60 frames) after taking damage, so getting hit once doesn't chain into instant death
-- **Combo window** (90 frames) rewarding aggressive play with streak bonuses
-- **Pickup magnet system** with configurable range for collecting drops
-- **Boss fights** every 5 waves with tougher enemies
-- **Upgrade shop** between waves (indicated by the "buy" sound effect in the audio engine)
+Enemy variety keeps it interesting. Grunts chase you down. Dashers zigzag in fast. Tanks absorb punishment and shoot back. Snipers kite at range. Bombers rush you. And the boss does all of it.
 
-## Under the Hood
+Sequel to [Void Survivor](https://github.com/sisiphamus/void-survivor-game), which proved the concept. This one has the depth.
 
-Like Void Survivor, everything is self-contained:
-
-- **All audio synthesized** via Web Audio API at runtime (shoot, hit, explode, pickup, buy, death, wave-start)
-- **Canvas rendering** with pixel-art mode (`image-rendering: pixelated; crisp-edges`) for a retro aesthetic
-- **Screen shake** with 0.88 decay factor for impact feedback
-- **Responsive canvas** scaling to fill the browser window
-- **Well-organized config object** (`CFG`) for easy balance tuning of speeds, HP, cooldowns, and damage values
-
-## Tech
-
-HTML5 Canvas, vanilla JavaScript, Web Audio API. Single file, zero dependencies.
+`index.html` -- that's the whole repo.
